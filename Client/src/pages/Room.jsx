@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import Layout from "../../Layout/Layout";
 const Room = () => {
     const [Roomcode, setRoomcode] = useState('');
     const navigate = useNavigate();
@@ -11,7 +10,6 @@ const Room = () => {
         navigate(`/room/${Roomcode}`);
     }
     return (
-        // <Layout>
             <div className="h-[100vh] flex justify-center items-center">
                 <div className="h-[30vh] w-[30vw] flex items-center justify-center border border-black shadow-2xl">
                     <form onSubmit={handleSubmit} className="block">

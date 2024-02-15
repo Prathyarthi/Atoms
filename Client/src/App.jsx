@@ -1,5 +1,4 @@
 import "./App.css";
-import Home from './components/Home';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import ResetPassword from './components/ResetPassword';
@@ -8,12 +7,12 @@ import PageNotFound from './components/PageNotFound';
 import RoomPage from "./pages/RoomPage";
 import { Route, Routes } from "react-router-dom";
 import Room from "./pages/Room";
+import Layout from "./Layout";
 
 function App() {
   return (
-    <div className="App h-[100vh] flex justify-center items-center">
-      <Routes>
-        <Route path="/" element={<Home />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -24,8 +23,8 @@ function App() {
           element={<ResetPassword />}
         />
         <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </div>
+      </Route>
+    </Routes>
   );
 }
 
