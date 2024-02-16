@@ -1,5 +1,6 @@
 import express from "express";
 import authRouter from "./router/authRoute.js";
+import communityRoutes from "./router/communityRoutes.js";
 import dbConnect from "./Config/DBconfig.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -17,7 +18,8 @@ app.use(
   })
 );
 
-app.use("/api/auth", authRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/community", communityRoutes);
 
 app.use('/', (req, res) => {
   res.status(200).json({

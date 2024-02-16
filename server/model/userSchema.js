@@ -24,6 +24,11 @@ const userSchema = new Schema(
       type: String,
       select: false,
     },
+    role: {
+      type: String,
+      enum: ['USER', 'ADMIN'],
+      default: 'USER',
+    },
     forgotPasswordToken: {
       type: String,
     },
@@ -47,7 +52,7 @@ userSchema.methods = {
   //method for generating the jwt token
   jwtToken() {
     return JWT.sign(
-      { id: this._id, email: this.email },
+      { id: this._id, email: this.email, role: this.role },
       process.env.SECRET,
       { expiresIn: '24h' } // 24 hours
     );

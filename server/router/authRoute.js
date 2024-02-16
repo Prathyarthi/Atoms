@@ -1,6 +1,6 @@
 import express from "express";
 const authRouter = express.Router();
-import jwtAuth from "../middleware/jwtAuth.js";
+import { jwtAuth } from "../middleware/jwtAuth.js";
 
 import {
   signUp,
