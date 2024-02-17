@@ -7,7 +7,8 @@ export const RequiredAuth = ({ allowedRoles }) => {
     const role = useRecoilValue(rolesAtom)
     const location = useLocation()
 
-    return isLoggedIn && allowedRoles.find((myRole) => myRole === role) ? (
+    // return isLoggedIn && allowedRoles.find((myRole) => myRole === role) ? (
+    return isLoggedIn && allowedRoles.includes(role) ? (
         <Outlet />
     ) : isLoggedIn ? (
         <Navigate to={"/denied"} state={{ from: location }} replace />

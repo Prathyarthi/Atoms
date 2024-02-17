@@ -20,13 +20,14 @@ function SignIn() {
     try {
       const response = await axios({
         method: "post",
-        url: URL + "/api/auth/signin",
+        url: URL + "/api/v1/auth/signin",
         withCredentials: true,
         data: credentials
       });
       if (response.data.success) {
         setIsLoggedIn(true);
         setRole(response.data.user.role);
+        console.log(response.data.user.role);
         localStorage.setItem('isLoggedIn', true);
         localStorage.setItem('role', response.data.user.role);
         navigate("/");

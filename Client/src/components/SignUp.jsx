@@ -19,7 +19,7 @@ function SignUp() {
     try {
       const response = await axios({
         method: "post",
-        url: URL + "/api/auth/signup",
+        url: URL + "/api/v1/auth/signup",
         withCredentials: true,
         data: userData
       });
