@@ -8,20 +8,32 @@ import RoomPage from "./pages/RoomPage";
 import { Route, Routes } from "react-router-dom";
 import Room from "./pages/Room";
 import Layout from "./Layout";
+import { RequiredAuth } from "./components/Auth/RequiredAuth";
+import Denied from "./pages/Denied";
+import NotRequiredAuth from "./components/Auth/NotRequiredAuth";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/denied" element={<Denied />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/live" element={<Room />} />
-        <Route path="/room/:roomId" element={<RoomPage />} />
         <Route
           path="/reset-password/:resetPasswordToken"
           element={<ResetPassword />}
         />
+
+        <Route element={<NotRequiredAuth />}>
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
+
+        <Route element={<RequiredAuth allowedRoles={["USER", "ADMIN"]} />}>
+          <Route path="/live" element={<Room />} />
+          <Route path="/room/:roomId" element={<RoomPage />} />
+          <Route path="/community" element={<RoomPage />} />
+        </Route>
+
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>

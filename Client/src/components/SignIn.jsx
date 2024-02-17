@@ -1,9 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { isLoggedInAtom, rolesAtom } from "../recoil/atoms";
+import { useSetRecoilState } from "recoil";
 
 function SignIn() {
   const navigate = useNavigate();
+
+  const setIsLoggedIn = useSetRecoilState(isLoggedInAtom);
+  const setRole = useSetRecoilState(rolesAtom);
 
   const [loading, setLoading] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -20,6 +25,10 @@ function SignIn() {
         data: credentials
       });
       if (response.data.success) {
+        setIsLoggedIn(true);
+        setRole(response.data.user.role);
+        localStorage.setItem('isLoggedIn', true);
+        localStorage.setItem('role', response.data.user.role);
         navigate("/");
       }
       setLoading(false);
