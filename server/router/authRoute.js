@@ -8,7 +8,8 @@ import {
   forgotPassword,
   resetPassword,
   getUser,
-  logout
+  logout,
+  applyDoctorController
 } from "../controller/authController.js";
 
 authRouter.post("/signup", signUp);
@@ -18,5 +19,6 @@ authRouter.post("/resetpassword/:token", resetPassword);
 
 authRouter.get("/user", jwtAuth, getUser);
 authRouter.get("/logout", jwtAuth, logout);
+authRouter.post("/apply-doctor", jwtAuth, applyDoctorController);
 
 export default authRouter;

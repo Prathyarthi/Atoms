@@ -19,7 +19,9 @@ app.use(
 );
 
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/community", communityRoutes);
+// app.use("/api/v1/doctor", doctorRoutes);
+// app.use("/api/v1/category", categoryRoutes);
+app.use("/api/v1/product", communityRoutes);
 
 app.use('/', (req, res) => {
   res.status(200).json({
