@@ -24,13 +24,16 @@ function SignIn() {
         withCredentials: true,
         data: credentials
       });
+      console.log(response.data);
       if (response.data.success) {
         setIsLoggedIn(true);
         setRole(response.data.user.role);
         console.log(response.data.user.role);
         localStorage.setItem('isLoggedIn', true);
         localStorage.setItem('role', response.data.user.role);
+        localStorage.setItem('token', response.data.token);
         navigate("/");
+        window.location.reload()
       }
       setLoading(false);
     } catch (error) {

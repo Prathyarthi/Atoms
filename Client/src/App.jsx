@@ -11,6 +11,8 @@ import Layout from "./Layout";
 import { RequiredAuth } from "./components/Auth/RequiredAuth";
 import Denied from "./pages/Denied";
 import NotRequiredAuth from "./components/Auth/NotRequiredAuth";
+import CommunityCard from './components/CommunityCard'
+import Appointments from "./pages/Appointments";
 
 function App() {
   return (
@@ -31,7 +33,8 @@ function App() {
         <Route element={<RequiredAuth allowedRoles={["USER", "ADMIN"]} />}>
           <Route path="/live" element={<Room />} />
           <Route path="/room/:roomId" element={<RoomPage />} />
-          <Route path="/community" element={<RoomPage />} />
+          <Route path="/appointments" element={<Appointments />} />
+          <Route path="/community" element={<CommunityCard />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

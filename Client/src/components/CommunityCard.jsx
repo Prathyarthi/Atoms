@@ -1,4 +1,4 @@
-import doctorLogo from "../../assets/doctor-image.png";
+import doctorLogo from "../assets/doctor-image.png";
 
 function CommunityCard({ title, description }) {
     return (
