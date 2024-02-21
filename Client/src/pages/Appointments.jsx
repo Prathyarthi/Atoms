@@ -2,7 +2,7 @@ import React from 'react'
 
 function Appointments() {
   return (
-    <div>Appointe</div>
+    <div>dhyjgga</div>
   )
 }
 

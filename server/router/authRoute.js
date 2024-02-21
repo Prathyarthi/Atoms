@@ -19,6 +19,6 @@ authRouter.post("/resetpassword/:token", resetPassword);
 
 authRouter.get("/user", jwtAuth, getUser);
 authRouter.get("/logout", jwtAuth, logout);
-authRouter.post("/apply-doctor", jwtAuth, applyDoctorController);
+authRouter.post("/applyDoctor", jwtAuth, applyDoctorController);
 
 export default authRouter;

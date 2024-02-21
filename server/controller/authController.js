@@ -2,6 +2,7 @@ import { userModel } from '../model/userSchema.js'
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import emailValidator from "email-validator";
+import { doctorModel } from '../model/doctorModel.js';
 
 
 const signUp = async (req, res, next) => {
@@ -252,15 +253,19 @@ const getUser = async (req, res, next) => {
 
 
 const applyDoctorController = async (req, res) => {
+  const userId = req.user.id;
   try {
     const doctor = await doctorModel({
       ...req.body,
-      status: "pending"
+      status: "pending",
+      userId
     });
+    console.log(doctor);
     await doctor.save();
     const adminUser = await userModel.findOne({
       isAdmin: true
     });
+    console.log(adminUser);
 
     const notification = adminUser.notification;
     notification.push({
@@ -285,7 +290,7 @@ const applyDoctorController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error WHile Applying For Doctotr",
+      message: "Error While Applying For Doctotr",
     });
   }
 };

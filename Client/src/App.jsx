@@ -13,6 +13,7 @@ import Denied from "./pages/Denied";
 import NotRequiredAuth from "./components/Auth/NotRequiredAuth";
 import CommunityCard from './components/CommunityCard'
 import Appointments from "./pages/Appointments";
+import ApplyAsDoctor from "./pages/ApplyAsDoctor";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/room/:roomId" element={<RoomPage />} />
           <Route path="/appointments" element={<Appointments />} />
           <Route path="/community" element={<CommunityCard />} />
+          <Route path="/applyAsDoctor" element={<ApplyAsDoctor />} />
         </Route>
 
         <Route path="*" element={<PageNotFound />} />

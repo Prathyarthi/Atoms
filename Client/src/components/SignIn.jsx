@@ -33,7 +33,7 @@ function SignIn() {
         localStorage.setItem('role', response.data.user.role);
         localStorage.setItem('token', response.data.token);
         navigate("/");
-        window.location.reload()
+        // window.location.reload()
       }
       setLoading(false);
     } catch (error) {

@@ -13,8 +13,10 @@
     "@zegocloud/zego-uikit-prebuilt": "^1.10.2",
     "axios": "^1.6.5",
     "dotenv": "^16.4.4",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.21.2",
     "recoil": "^0.7.7"
   },

@@ -1,21 +1,18 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const doctorSchema = new mongoose.Schema(
   {
-    doctorId: {
-      type: String,
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
-    firstName: {
+    name: {
       type: String,
-      required: [true, "first name is required"],
-    },
-    lastName: {
-      type: String,
-      required: [true, "last name is required"],
+      required: [true, "Name is required"],
     },
     phone: {
       type: String,
-      required: [true, "phone no is required"],
+      required: [true, "Phone is required"],
     },
     email: {
       type: String,
@@ -36,7 +33,7 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       required: [true, "experience is required"],
     },
-    feesPerCunsaltation: {
+    feePerConsultation: {
       type: Number,
       required: [true, "fee is required"],
     },
@@ -44,13 +41,21 @@ const doctorSchema = new mongoose.Schema(
       type: String,
       default: "pending",
     },
-    timings: {
+    // timings: {
+    //   type: Object,
+    //   required: [true, "work timing is required"],
+    // },
+    fromTime: {
       type: Object,
-      required: [true, "wrok timing is required"],
+      required: [true, "work timing is required"],
+    },
+    toTime: {
+      type: Object,
+      required: [true, "work timing is required"],
     },
   },
   { timestamps: true }
 );
 
-const doctorModel = mongoose.model("doctors", doctorSchema);
-module.exports = doctorModel;
+export const doctorModel = mongoose.model("doctors", doctorSchema);
+

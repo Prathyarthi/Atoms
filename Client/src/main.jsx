@@ -16,11 +16,13 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RecoilRoot>
+      <Toaster />
       <BrowserRouter>
         <App />
       </BrowserRouter>
