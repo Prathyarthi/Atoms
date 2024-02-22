@@ -260,12 +260,11 @@ const applyDoctorController = async (req, res) => {
       status: "pending",
       userId
     });
-    console.log(doctor);
-    await doctor.save();
+
+    await doctor.save();   
     const adminUser = await userModel.findOne({
       isAdmin: true
     });
-    console.log(adminUser);
 
     const notification = adminUser.notification;
     notification.push({
@@ -281,7 +280,7 @@ const applyDoctorController = async (req, res) => {
       notification
     });
 
-    res.status(201).send({
+    return res.status(201).json({
       success: true,
       message: "Doctor Account Applied Successfully",
     });
@@ -290,7 +289,7 @@ const applyDoctorController = async (req, res) => {
     res.status(500).send({
       success: false,
       error,
-      message: "Error While Applying For Doctotr",
+      message: "Error While Applying For Doctor",
     });
   }
 };

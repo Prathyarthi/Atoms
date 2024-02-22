@@ -9,7 +9,7 @@ function ApplyAsDoctor() {
 
     const onCompleted = async () => {
         try {
-            const response = await axios.post('http://localhost:5003/api/v1/auth/applyDoctor', {
+            let response = axios.post('http://localhost:5003/api/v1/auth/applyDoctor', {
                 name: personalInfo.name,
                 email: personalInfo.email,
                 phone: personalInfo.phone,
@@ -22,7 +22,9 @@ function ApplyAsDoctor() {
             }, {
                 withCredentials: true
             })
-            console.log(response);
+            response = await response
+            console.log(response.data);
+            console.log(response.data.success);
             if (response.data.success) {
                 toast.success(response.data.message)
                 navigate('/')
@@ -49,7 +51,7 @@ function ApplyAsDoctor() {
     const [professionalInfo, setProfessionalInfo] = useState({
         specialization: '',
         experience: '',
-        feePerConsultation: '',
+        feePerConsultation: 0,
         fromTime: '',
         toTime: ''
     });
